@@ -33,7 +33,7 @@ androidExtensions {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 
     // Navigation
     implementation "android.arch.navigation:navigation-fragment:$navigation_version"
@@ -41,7 +41,7 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
 
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation "androidx.core:core-ktx:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
     // Room
@@ -53,6 +53,10 @@ dependencies {
 
     // Gson
     implementation "com.google.code.gson:gson:2.8.5"
+
+    // Kotlin Android Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0-RC1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0-RC1"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -82,13 +86,13 @@ dependencies {
     // Preference
     implementation "androidx.preference:preference:1.0.0"
 
-    // Location
+    // WeatherLocation
     implementation "com.google.android.gms:play-services-location:16.0.0"
 
     // New Material Design
     implementation "com.google.android.material:material:1.0.0"
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
