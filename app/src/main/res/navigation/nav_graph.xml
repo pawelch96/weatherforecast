@@ -6,10 +6,10 @@
 
     <fragment android:id="@+id/currentWeatherFragment"
               android:name="com.user.weatherforecast.ui.weather.current.CurrentWeatherFragment"
-              android:label="current_weather_fragment" tools:layout="@layout/current_weather_fragment"/>
+              android:label="Dzisiejsza Prognoza" tools:layout="@layout/current_weather_fragment"/>
     <fragment android:id="@+id/futureListWeatherFragment"
               android:name="com.user.weatherforecast.ui.weather.future.list.FutureListWeatherFragment"
-              android:label="future_list_weather_fragment" tools:layout="@layout/future_list_weather_fragment"/>
+              android:label="Future Forecast List" tools:layout="@layout/future_list_weather_fragment"/>
     <fragment android:id="@+id/futureWeatherDetailsFragment"
               android:name="com.user.weatherforecast.ui.weather.future.detail.FutureWeatherDetailsFragment"
               android:label="future_weather_details_fragment" tools:layout="@layout/future_weather_details_fragment"/>

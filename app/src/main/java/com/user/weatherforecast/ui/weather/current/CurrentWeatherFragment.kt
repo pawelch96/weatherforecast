@@ -2,16 +2,16 @@ package com.user.weatherforecast.ui.weather.current
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 
 import com.user.weatherforecast.R
+import com.user.weatherforecast.internal.glide.GlideApp
 import com.user.weatherforecast.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -43,7 +43,60 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         currentWeather.observe(this@CurrentWeatherFragment, Observer {
             if (it == null) return@Observer
 
-            textView.text = it.toString()
+            group_loading.visibility = View.GONE
+            updateLocation("Wrocław")
+            updateDate()
+            updateTemperature(it.temperature, it.feelsLikeTemperature)
+            updateCondition(it.conditionText)
+            updatePrecipitation(it.precipitationVolume)
+            updateWind(it.windDirection, it.windSpeed)
+            updatePressure(it.pressure)
+            updateVisibility(it.visibilityDistance)
+
+            GlideApp.with(this@CurrentWeatherFragment)
+                .load("http:${it.conditionIconUrl}")
+                .into(imageView_condition_icon)
         })
+    }
+
+    private fun chooseLocalizedUnitAbbreviation(metric: String, imperial: String): String {
+        return if (viewModel.isMetric) metric else imperial
+    }
+
+    private fun updateLocation(location: String) {
+        (activity as? AppCompatActivity)?.supportActionBar?.title = location
+    }
+
+    private fun updateDate() {
+        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "Dzisiaj"
+    }
+
+    private fun updateTemperature(temperature: Double, feelslike: Double) {
+        val unitAbbreviation = chooseLocalizedUnitAbbreviation("°C", "°F")
+        textView_temperature.text = "$temperature$unitAbbreviation"
+        textView_feels_like_temperature.text = "Odczuwalna $feelslike$unitAbbreviation"
+    }
+
+    private fun updateCondition(condition: String) {
+        textView_condition.text = condition
+    }
+
+    private fun updatePrecipitation(precipitation: Double) {
+        val unitAbbreviation = chooseLocalizedUnitAbbreviation("mm", "in")
+        textView_precipitation.text = "$precipitation $unitAbbreviation"
+    }
+
+    private fun updateWind(windDirection: String, windSpeed: Double) {
+        val unitAbbreviation = chooseLocalizedUnitAbbreviation("km/h", "mph")
+        textView_wind.text = "$windDirection, $windSpeed $unitAbbreviation"
+    }
+
+    private fun updateVisibility(visibility: Double) {
+        val unitAbbreviation = chooseLocalizedUnitAbbreviation("km", "mi")
+        textView_visibility.text = "$visibility $unitAbbreviation"
+    }
+
+    private fun updatePressure(pressure: Double) {
+        textView_pressure.text = "$pressure hPa"
     }
 }
