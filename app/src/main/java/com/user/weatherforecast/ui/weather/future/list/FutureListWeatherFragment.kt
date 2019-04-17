@@ -6,14 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 
 import com.user.weatherforecast.R
 
 class FutureListWeatherFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = FutureListWeatherFragment()
-    }
 
     private lateinit var viewModel: FutureListWeatherViewModel
 
@@ -27,7 +24,8 @@ class FutureListWeatherFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FutureListWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "Następne dni"
+        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = null
     }
 
 }

@@ -6,7 +6,7 @@
 
     <fragment android:id="@+id/currentWeatherFragment"
               android:name="com.user.weatherforecast.ui.weather.current.CurrentWeatherFragment"
-              android:label="Dzisiejsza Prognoza" tools:layout="@layout/current_weather_fragment"/>
+              tools:layout="@layout/current_weather_fragment"/>
     <fragment android:id="@+id/futureListWeatherFragment"
               android:name="com.user.weatherforecast.ui.weather.future.list.FutureListWeatherFragment"
               android:label="Future Forecast List" tools:layout="@layout/future_list_weather_fragment"/>

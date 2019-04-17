@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="Lokalizacja urządzenia">
+        <SwitchPreference
+                android:key="USE_DEVICE_LOCATION"
+                android:title="Użyj lokalizacji urządzenia"
+                android:summary="Zezwól aplikacji na dostęp do lokalizacji"
+                android:defaultValue="true"
+                android:disableDependentsState="true"/>
+
+        <EditTextPreference
+                android:key="CUSTOM_LOCATION"
+                android:title="Położenie"
+                android:summary="Miejsce, dla którego wyświetlona zostanie prognoza"
+                android:defaultValue="Wrocław"
+                android:dependency="USE_DEVICE_LOCATION"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="Jednostki">
+        <ListPreference
+                android:key="UNIT_SYSTEM"
+                android:title="System jednostkowy"
+                android:summary="%s"
+                android:defaultValue="METRIC"
+                android:entries="@array/unitSystemEntries"
+                android:entryValues="@array/unitSystemValues"/>
+    </PreferenceCategory>
+</PreferenceScreen>

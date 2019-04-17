@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 
 import com.user.weatherforecast.R
-import com.user.weatherforecast.internal.glide.GlideApp
 import com.user.weatherforecast.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 import kotlinx.coroutines.launch
@@ -53,9 +53,10 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updatePressure(it.pressure)
             updateVisibility(it.visibilityDistance)
 
-            GlideApp.with(this@CurrentWeatherFragment)
-                .load("http:${it.conditionIconUrl}")
+            Glide.with(this@CurrentWeatherFragment)
+                .load("https:${it.conditionIconUrl}")
                 .into(imageView_condition_icon)
+
         })
     }
 
