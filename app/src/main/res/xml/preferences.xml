@@ -6,14 +6,14 @@
                 android:key="USE_DEVICE_LOCATION"
                 android:title="Użyj lokalizacji urządzenia"
                 android:summary="Zezwól aplikacji na dostęp do lokalizacji"
-                android:defaultValue="true"
+                android:defaultValue="false"
                 android:disableDependentsState="true"/>
 
         <EditTextPreference
                 android:key="CUSTOM_LOCATION"
                 android:title="Położenie"
                 android:summary="Miejsce, dla którego wyświetlona zostanie prognoza"
-                android:defaultValue="Wrocław"
+                android:defaultValue="Wroclaw"
                 android:dependency="USE_DEVICE_LOCATION"/>
     </PreferenceCategory>
 

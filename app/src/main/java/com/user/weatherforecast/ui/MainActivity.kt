@@ -1,9 +1,12 @@
 package com.user.weatherforecast.ui
 
 import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -13,7 +16,6 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import com.user.weatherforecast.R
 import kotlinx.android.synthetic.main.activity_main.*
-import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
@@ -45,6 +47,15 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         NavigationUI.setupActionBarWithNavController(this, navController)
 
         requestLocationPermission()
+
+        if (hasLocationPermission()) {
+            bindLocationManger()
+        }
+        else requestLocationPermission()
+    }
+
+    private fun bindLocationManger() {
+        LifecycleBoundLocationManager(this, fusedLocationProviderClient, locationCallback)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -59,5 +70,20 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         )
     }
 
+    private fun hasLocationPermission() : Boolean {
+        return ContextCompat.checkSelfPermission(this,
+            Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        if (requestCode == PERMISSION_ACCESS_COARSE_LOCATION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                bindLocationManger()
+            else
+                Toast.makeText(this, "Przyznaj wymagane uprawnienia w ustawieniach aplikacji", Toast.LENGTH_LONG).show()
+        }
+
+    }
 
 }

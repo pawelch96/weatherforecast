@@ -1,4 +1,4 @@
-package com.user.weatherforecast.data.db.unitlocalized
+package com.user.weatherforecast.data.db.unitlocalized.current
 
 import androidx.room.ColumnInfo
 
