@@ -1,5 +1,6 @@
 package com.user.weatherforecast.ui.weather.future.list
 
+import com.bumptech.glide.Glide
 import com.user.weatherforecast.R
 import com.user.weatherforecast.data.db.unitlocalized.future.simple.MetricSimpleFutureWeatherEntry
 import com.user.weatherforecast.data.db.unitlocalized.future.simple.UnitSpecificSimpleFutureWeatherEntry
@@ -31,14 +32,13 @@ class FutureWeatherItem(val weatherEntry: UnitSpecificSimpleFutureWeatherEntry) 
     private fun ViewHolder.updateTemperature() {
         val unit = if (weatherEntry is MetricSimpleFutureWeatherEntry) "°C"
         else "°F"
-        //textView_temperature.text = "${weatherEntry.minTemperature}$unit/${weatherEntry.maxTemperature}$unit"
         textView_temperature_min.text = "${weatherEntry.minTemperature}$unit"
         textView_temperature_max.text = "${weatherEntry.maxTemperature}$unit"
     }
 
     private fun ViewHolder.updateConditionIcon() {
-        GlideApp.with(this.containerView)
-            .load("http:" + weatherEntry.conditionIconUrl)
+        Glide.with(this.containerView)
+            .load("https:" + weatherEntry.conditionIconUrl)
             .into(imageView_condition_icon)
     }
 }
