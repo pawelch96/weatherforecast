@@ -9,10 +9,15 @@
               tools:layout="@layout/current_weather_fragment"/>
     <fragment android:id="@+id/futureListWeatherFragment"
               android:name="com.user.weatherforecast.ui.weather.future.list.FutureListWeatherFragment"
-              android:label="Future Forecast List" tools:layout="@layout/future_list_weather_fragment"/>
+              tools:layout="@layout/future_list_weather_fragment">
+        <action android:id="@+id/actionDetail"
+                app:destination="@id/futureWeatherDetailsFragment"/>
+    </fragment>
     <fragment android:id="@+id/futureWeatherDetailsFragment"
               android:name="com.user.weatherforecast.ui.weather.future.detail.FutureWeatherDetailsFragment"
-              android:label="future_weather_details_fragment" tools:layout="@layout/future_weather_details_fragment"/>
+              tools:layout="@layout/future_weather_details_fragment">
+        <argument android:name="dateString" app:argType="string"/>
+    </fragment>
     <fragment android:name="com.user.weatherforecast.ui.settings.SettingsFragment"
               android:label="SettingsFragment" android:id="@+id/settingsFragment"/>
 </navigation>

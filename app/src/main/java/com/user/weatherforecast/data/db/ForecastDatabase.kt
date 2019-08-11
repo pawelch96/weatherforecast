@@ -8,14 +8,13 @@ import androidx.room.TypeConverters
 import com.user.weatherforecast.data.db.entity.CurrentWeatherEntry
 import com.user.weatherforecast.data.db.entity.FutureWeatherEntry
 import com.user.weatherforecast.data.db.entity.WeatherLocation
-import org.threeten.bp.LocalDate
 
 @Database(
     entities = [CurrentWeatherEntry::class, FutureWeatherEntry::class, WeatherLocation::class],
     version = 1
 )
 
-@TypeConverters(LocalDate::class)
+@TypeConverters(LocalDateConverter::class)
 abstract class ForecastDatabase : RoomDatabase() {
     abstract fun currentWeatherDao(): CurrentWeatherDao
     abstract fun futureWeatherDao(): FutureWeatherDao

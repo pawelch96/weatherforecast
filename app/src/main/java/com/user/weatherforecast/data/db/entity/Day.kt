@@ -12,7 +12,7 @@ data class Day(
     @SerializedName("mintemp_c")
     val mintempC: Double,
     @SerializedName("mintemp_f")
-    val mintempF: Int,
+    val mintempF: Double,
     @SerializedName("avgtemp_c")
     val avgtempC: Double,
     @SerializedName("avgtemp_f")
@@ -28,7 +28,7 @@ data class Day(
     @SerializedName("avgvis_km")
     val avgvisKm: Double,
     @SerializedName("avgvis_miles")
-    val avgvisMiles: Int,
+    val avgvisMiles: Double,
     @Embedded(prefix = "condition_")
     val condition: Condition,
     val uv: Double

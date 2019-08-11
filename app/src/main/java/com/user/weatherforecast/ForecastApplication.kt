@@ -14,14 +14,13 @@ import com.user.weatherforecast.data.provider.UnitProviderImpl
 import com.user.weatherforecast.data.repository.ForecastRepository
 import com.user.weatherforecast.data.repository.ForecastRepositoryImpl
 import com.user.weatherforecast.ui.weather.current.CurrentWeatherViewModelFactory
+import com.user.weatherforecast.ui.weather.future.detail.FutureWeatherDetailsViewModelFactory
 import com.user.weatherforecast.ui.weather.future.list.FutureListWeatherViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.generic.*
+import org.threeten.bp.LocalDate
 
 class ForecastApplication: Application(), KodeinAware {
     override val kodein = Kodein.lazy {
@@ -40,6 +39,7 @@ class ForecastApplication: Application(), KodeinAware {
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
         bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
+        bind() from factory { detailDate: LocalDate -> FutureWeatherDetailsViewModelFactory(detailDate, instance(), instance()) }
     }
 
     override fun onCreate() {
