@@ -4,4 +4,6 @@
 
     <!--FutureListWeatherFragment-->
     <string name="future_list_fragment_next_week">Następne dni</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

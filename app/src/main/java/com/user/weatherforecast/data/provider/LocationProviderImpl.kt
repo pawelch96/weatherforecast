@@ -9,6 +9,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.user.weatherforecast.data.db.entity.WeatherLocation
 import com.user.weatherforecast.internal.LocationPermissionNotGrantedException
 import com.user.weatherforecast.internal.asDeferred
+import com.user.weatherforecast.internal.normalize
 import kotlinx.coroutines.Deferred
 import java.util.jar.Manifest
 
@@ -65,7 +66,8 @@ class LocationProviderImpl(
     }
 
     private fun getCustomLocationName(): String? {
-        return preferences.getString(CUSTOM_LOCATION, null)
+        val string = preferences.getString(CUSTOM_LOCATION, null)
+        return (if (string != null) string.normalize() else throw KotlinNullPointerException())
     }
 
     private fun isUsingDeviceLocation(): Boolean {
