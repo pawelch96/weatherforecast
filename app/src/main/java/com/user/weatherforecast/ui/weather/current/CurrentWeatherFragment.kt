@@ -59,9 +59,9 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updatePressure(it.pressure)
             updateVisibility(it.visibilityDistance)
 
-            Glide.with(this@CurrentWeatherFragment)
-                .load("https:${it.conditionIconUrl}")
-                .into(imageView_condition_icon)
+//            Glide.with(this@CurrentWeatherFragment)
+//                .load("https:${it.conditionIconUrl}")
+//                .into(imageView_condition_icon)
 
         })
     }
