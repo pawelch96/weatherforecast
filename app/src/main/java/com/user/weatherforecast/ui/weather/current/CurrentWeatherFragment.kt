@@ -51,7 +51,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             if (it == null) return@Observer
 
             group_loading.visibility = View.GONE
-            updateDate()
+
             updateTemperature(it.temperature, it.feelsLikeTemperature)
             updateCondition(it.conditionText)
             updatePrecipitation(it.precipitationVolume)
@@ -59,9 +59,9 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updatePressure(it.pressure)
             updateVisibility(it.visibilityDistance)
 
-//            Glide.with(this@CurrentWeatherFragment)
-//                .load("https:${it.conditionIconUrl}")
-//                .into(imageView_condition_icon)
+            Glide.with(this@CurrentWeatherFragment)
+                .load("https:${it.conditionIconUrl}")
+                .into(imageView_condition_icon)
 
         })
     }
@@ -72,10 +72,6 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun updateLocation(location: String) {
         (activity as? AppCompatActivity)?.supportActionBar?.title = location
-    }
-
-    private fun updateDate() {
-        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "Dzisiaj"
     }
 
     private fun updateTemperature(temperature: Double, feelslike: Double) {
