@@ -33,19 +33,18 @@
 
     <ImageView
             android:id="@+id/imageView_condition_icon"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_percent="0.25"
-            tools:tint="#f9a920"
-            android:src="@drawable/partly_cloudy_day"
+            android:src="@drawable/partly_cloudy_night"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/textView_condition"
             app:layout_constraintVertical_bias="0.007"/>
 
@@ -53,9 +52,9 @@
             android:id="@+id/textView_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+            android:textSize="54sp"
             tools:text="25.0°C"
-            android:letterSpacing="0.1"
+            android:letterSpacing="0.15"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView_condition_icon"
             app:layout_constraintEnd_toEndOf="@+id/imageView_condition_icon"
@@ -77,30 +76,46 @@
             app:layout_constraintVertical_bias="0.0"
             tools:text="Odczuwalna 20.4°C"/>
 
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7"/>
+
     <TextView
             android:id="@+id/textView_wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_weather_wind"
-            android:drawablePadding="8dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_wind_new"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            android:drawablePadding="16dp"
             tools:text="SE, 5.3 m/s"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_feels_like_temperature"/>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"/>
 
     <TextView
             android:id="@+id/textView_precipitation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_weather_precip"
-            android:drawablePadding="8dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_precip_new"
+            android:drawablePadding="16dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
             tools:text="15 mm"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textView_wind"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
@@ -111,13 +126,14 @@
             android:id="@+id/textView_pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_weather_pressure"
-            android:drawablePadding="8dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_weight"
+            android:drawablePadding="16dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
             tools:text="1000 hPa"
             app:layout_constraintStart_toStartOf="@+id/textView_wind"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textView_precipitation"
             app:layout_constraintHorizontal_bias="0.0"/>
 
@@ -125,15 +141,27 @@
             android:id="@+id/textView_visibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_weather_visibility"
-            android:drawablePadding="8dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_eye"
+            android:drawablePadding="16dp"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
             tools:text="10 km"
             app:layout_constraintStart_toStartOf="@+id/textView_wind"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textView_pressure"
             app:layout_constraintHorizontal_bias="0.0"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bottom_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Group
             android:id="@+id/group_loading"
