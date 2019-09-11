@@ -92,8 +92,8 @@ class FutureWeatherDetailsFragment : ScopedFragment(), KodeinAware {
 
     private fun updateTemperatures(minTemperature: Double, maxTemperature: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("°C", "°F")
-        textView_min_temperature.text = "$minTemperature$unitAbbreviation"
-        textView_max_temperature.text = "$maxTemperature$unitAbbreviation"
+        textView_min_temperature.text = resources.getString(R.string.global_two_strings, minTemperature.toString(), unitAbbreviation)
+        textView_max_temperature.text = resources.getString(R.string.global_two_strings, maxTemperature.toString(), unitAbbreviation)
     }
 
     private fun updateCondition(condition: String) {
@@ -102,17 +102,17 @@ class FutureWeatherDetailsFragment : ScopedFragment(), KodeinAware {
 
     private fun updatePrecipitation(precipitation: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("mm", "in")
-        textView_precipitation.text = "$precipitation $unitAbbreviation"
+        textView_precipitation.text = resources.getString(R.string.global_two_strings, precipitation.toString(), unitAbbreviation)
     }
 
     private fun updateWind(windSpeed: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("km/h", "mph")
-        textView_wind.text = "$windSpeed $unitAbbreviation"
+        textView_wind.text = resources.getString(R.string.global_two_strings, windSpeed.toString(), unitAbbreviation)
     }
 
     private fun updateVisibility(visibility: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("km", "mi")
-        textView_visibility.text = "$visibility $unitAbbreviation"
+        textView_visibility.text = resources.getString(R.string.global_two_strings, visibility.toString(), unitAbbreviation)
     }
 
     private fun updateSunrise(sunriseTime: String) {

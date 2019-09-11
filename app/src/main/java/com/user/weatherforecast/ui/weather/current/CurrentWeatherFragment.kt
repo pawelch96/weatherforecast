@@ -55,7 +55,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updateTemperature(it.temperature, it.feelsLikeTemperature)
             updateCondition(it.conditionText)
             updatePrecipitation(it.precipitationVolume)
-            updateWind(it.windDirection, it.windSpeed)
+            updateWind(it.windSpeed)
             updatePressure(it.pressure)
             updateVisibility(it.visibilityDistance)
 
@@ -74,10 +74,10 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         (activity as? AppCompatActivity)?.supportActionBar?.title = location
     }
 
-    private fun updateTemperature(temperature: Double, feelslike: Double) {
+    private fun updateTemperature(temperature: Double, feelsLike: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("°C", "°F")
-        textView_temperature.text = "$temperature$unitAbbreviation"
-        textView_feels_like_temperature.text = "Odczuwalna $feelslike$unitAbbreviation"
+        textView_temperature.text = resources.getString(R.string.global_two_strings, temperature.toString(), unitAbbreviation)
+        textView_feels_like_temperature.text = resources.getString(R.string.current_weather_feels_like, feelsLike.toString(), unitAbbreviation)
     }
 
     private fun updateCondition(condition: String) {
@@ -86,20 +86,20 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
     private fun updatePrecipitation(precipitation: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("mm", "in")
-        textView_precipitation.text = "$precipitation $unitAbbreviation"
+        textView_precipitation.text = resources.getString(R.string.global_two_strings, precipitation.toString(), unitAbbreviation)
     }
 
-    private fun updateWind(windDirection: String, windSpeed: Double) {
+    private fun updateWind(windSpeed: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("km/h", "mph")
-        textView_wind.text = "$windDirection, $windSpeed $unitAbbreviation"
+        textView_wind.text = resources.getString(R.string.global_two_strings, windSpeed.toString(), unitAbbreviation)
     }
 
     private fun updateVisibility(visibility: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("km", "mi")
-        textView_visibility.text = "$visibility $unitAbbreviation"
+        textView_visibility.text = resources.getString(R.string.global_two_strings, visibility.toString(), unitAbbreviation)
     }
 
     private fun updatePressure(pressure: Double) {
-        textView_pressure.text = "$pressure hPa"
+        textView_pressure.text = resources.getString(R.string.global_two_strings, pressure.toString(), "hPa")
     }
 }
